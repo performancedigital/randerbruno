@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import SectionWrapper from '@/components/ui/SectionWrapper';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import { AUTHORITY, INSTAGRAM_LINKS } from '@/lib/constants';
@@ -8,14 +9,22 @@ export default function AuthoritySection() {
     <SectionWrapper glow="green" className="section-glow">
       <div className="grid md:grid-cols-5 gap-8 md:gap-12 items-center">
         <AnimatedSection animation="fade-left" className="md:col-span-2">
-          <div className="relative">
-            <div className="w-full aspect-square max-w-xs mx-auto rounded-2xl bg-brand-navy border border-white/[0.06] flex items-center justify-center overflow-hidden">
-              <span className="text-6xl font-display font-black text-brand-green/20">RB</span>
+          <div className="relative max-w-xs mx-auto">
+            {/* Glow */}
+            <div className="absolute inset-0 bg-brand-green/10 rounded-2xl blur-[40px] scale-90" />
+            <div className="relative aspect-square rounded-2xl overflow-hidden border border-white/[0.06]">
+              <Image
+                src="/images/rander-authority.jpeg"
+                alt="Engenheiro Rander Bruno"
+                fill
+                className="object-cover object-top"
+                sizes="(max-width: 768px) 280px, 320px"
+              />
             </div>
             {/* Floating badge */}
             <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 glass-card neon-border px-4 py-2 flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-brand-green animate-pulse" />
-              <span className="text-xs font-bold text-brand-green">ENGENHEIRO ATIVO</span>
+              <span className="text-xs font-bold text-brand-green">17+ ANOS NO MERCADO</span>
             </div>
           </div>
         </AnimatedSection>
