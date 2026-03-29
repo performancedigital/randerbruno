@@ -1,10 +1,11 @@
-﻿import HeroSection from '@/components/sections/HeroSection';
+import HeroSection from '@/components/sections/HeroSection';
 import SocialProofBar from '@/components/sections/SocialProofBar';
 import PainPointsSection from '@/components/sections/PainPointsSection';
-import VideoSection from '@/components/sections/VideoSection';
+import DiagnosticSection from '@/components/sections/DiagnosticSection';
+import ResultsSection from '@/components/sections/ResultsSection';
 import PromiseSection from '@/components/sections/PromiseSection';
 import AuthoritySection from '@/components/sections/AuthoritySection';
-import TestimonialsSection from '@/components/sections/TestimonialsSection';
+import CaptureSection from '@/components/sections/CaptureSection';
 import FinalCTASection from '@/components/sections/FinalCTASection';
 import FooterSection from '@/components/sections/FooterSection';
 
@@ -14,10 +15,11 @@ export default function Home() {
       <HeroSection />
       <SocialProofBar />
       <PainPointsSection />
-      <VideoSection />
+      <DiagnosticSection />
+      <ResultsSection />
       <PromiseSection />
       <AuthoritySection />
-      <TestimonialsSection />
+      <CaptureSection />
       <FinalCTASection />
       <FooterSection />
     </>

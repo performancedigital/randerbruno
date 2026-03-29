@@ -1,7 +1,10 @@
-﻿'use client';
+'use client';
 
 import { useEffect, useRef, useState } from 'react';
 import { STATS } from '@/lib/constants';
+import { Calendar, Building2, TrendingUp, ArrowDownCircle } from 'lucide-react';
+
+const icons = [Calendar, Building2, TrendingUp, ArrowDownCircle];
 
 export default function SocialProofBar() {
   const ref = useRef<HTMLDivElement>(null);
@@ -17,18 +20,22 @@ export default function SocialProofBar() {
   }, []);
 
   return (
-    <div ref={ref} className="bg-brand-navy/80 border-y border-white/5">
-      <div className="max-w-6xl mx-auto px-4 py-10 grid grid-cols-3 gap-4 text-center">
-        {STATS.map((stat, i) => (
-          <div
-            key={i}
-            className={`transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
-            style={{ transitionDelay: `${i * 150}ms` }}
-          >
-            <div className="text-3xl md:text-5xl font-display font-black text-brand-gold">{stat.value}</div>
-            <div className="text-xs md:text-sm text-brand-gray mt-1">{stat.label}</div>
-          </div>
-        ))}
+    <div ref={ref} className="relative section-glow bg-brand-dark-2/80 border-y border-white/[0.04]">
+      <div className="max-w-6xl mx-auto px-4 py-10 grid grid-cols-2 md:grid-cols-4 gap-6">
+        {STATS.map((stat, i) => {
+          const Icon = icons[i];
+          return (
+            <div
+              key={i}
+              className={`text-center transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+              style={{ transitionDelay: `${i * 120}ms` }}
+            >
+              <Icon className="w-5 h-5 text-brand-green/60 mx-auto mb-2" />
+              <div className="text-2xl md:text-4xl font-display font-black text-brand-green neon-text">{stat.value}</div>
+              <div className="text-[11px] md:text-xs text-brand-gray mt-1 uppercase tracking-wider">{stat.label}</div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
