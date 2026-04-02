@@ -6,6 +6,12 @@ import SectionWrapper from '@/components/ui/SectionWrapper';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 
+declare global {
+  interface Window {
+    fbq?: (...args: unknown[]) => void;
+  }
+}
+
 export default function DiagnosticSection() {
   const [selected, setSelected] = useState<number | null>(null);
 
@@ -62,6 +68,7 @@ export default function DiagnosticSection() {
               href={WA_GROUP_LINK}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => { if (typeof window !== 'undefined' && window.fbq) window.fbq('track', 'Contact'); }}
               className="btn-primary px-8 py-4 text-sm"
             >
               VER MINHA ESTRATÉGIA

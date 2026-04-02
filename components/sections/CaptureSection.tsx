@@ -1,7 +1,15 @@
+'use client';
+
 import SectionWrapper from '@/components/ui/SectionWrapper';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import { WA_GROUP_LINK } from '@/lib/constants';
 import { Shield, MessageCircle, ArrowRight } from 'lucide-react';
+
+declare global {
+  interface Window {
+    fbq?: (...args: unknown[]) => void;
+  }
+}
 
 export default function CaptureSection() {
   return (
@@ -33,6 +41,7 @@ export default function CaptureSection() {
                 href={WA_GROUP_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => { if (typeof window !== 'undefined' && window.fbq) window.fbq('track', 'Contact'); }}
                 className="btn-primary w-full justify-center px-8 py-5 text-base"
               >
                 <MessageCircle className="w-5 h-5" />

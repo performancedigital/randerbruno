@@ -1,5 +1,13 @@
+'use client';
+
 import { MessageCircle } from 'lucide-react';
 import { WA_GROUP_LINK } from '@/lib/constants';
+
+declare global {
+  interface Window {
+    fbq?: (...args: unknown[]) => void;
+  }
+}
 
 interface WhatsAppButtonProps {
   text?: string;
@@ -20,11 +28,18 @@ export default function WhatsAppButton({
     lg: 'px-10 py-5 text-base',
   };
 
+  const handleClick = () => {
+    if (typeof window !== 'undefined' && window.fbq) {
+      window.fbq('track', 'Contact');
+    }
+  };
+
   return (
     <a
       href={WA_GROUP_LINK}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={handleClick}
       className={`${variant === 'primary' ? 'btn-primary' : 'btn-secondary'} ${sizeClasses[size]} ${className}`}
     >
       <MessageCircle className="w-5 h-5" />
